@@ -10,7 +10,9 @@
     "dependencies": {
         "@prisma/client": "6.7.0",
         "hono": "^4.7.9",
-        "prisma": "^6.7.0"
+        "hono-openapi": "^0.4.8",
+        "prisma": "^6.7.0",
+        "swagger-ui": "^5.21.0"
     },
     "devDependencies": {
         "@types/bun": "latest"
