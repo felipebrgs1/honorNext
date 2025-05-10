@@ -1,9 +1,15 @@
-import { Hono } from 'hono'
+import { Hono } from 'hono';
 
-const app = new Hono()
+import fs from 'fs';
+import path from 'path';
+const app = new Hono();
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+app.get('/', async (c) => {
+    const htmlContent = await fs.promises.readFile(
+        path.join(__dirname, 'default.html'),
+        'utf-8',
+    );
+    return c.html(htmlContent);
+});
 
-export default app
+export default app;
