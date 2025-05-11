@@ -3,16 +3,15 @@
     "scripts": {
         "dev": "bun run --hot src/index.ts",
         "prisma": "prisma",
-        "prisma:generate": "prisma generate --schema=src/db/user.schema.prisma",
-        "prisma:migrate": "prisma migrate dev --schema=src/db/user.schema.prisma",
-        "prisma:studio": "prisma studio --schema=src/db/user.schema.prisma"
+        "prisma:generate": "prisma generate --schema=src/db/prisma.schema.prisma",
+        "prisma:migrate": "prisma migrate dev --schema=src/db/prisma.schema.prisma",
+        "prisma:studio": "prisma studio --schema=src/db/prisma.schema.prisma"
     },
     "dependencies": {
         "@prisma/client": "6.7.0",
         "hono": "^4.7.9",
-        "hono-openapi": "^0.4.8",
         "prisma": "^6.7.0",
-        "swagger-ui": "^5.21.0"
+        "zod": "^3.24.4"
     },
     "devDependencies": {
         "@types/bun": "latest"

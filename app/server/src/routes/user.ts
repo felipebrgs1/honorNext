@@ -11,4 +11,15 @@ user.get('/:id', async (c) => {
     return c.json(user);
 });
 
+user.post('/create', async (c) => {
+    const { name, email } = await c.req.json();
+    const user = await prisma.user.create({
+        data: {
+            name,
+            email,
+        },
+    });
+    return c.json(user);
+});
+
 export default user;
