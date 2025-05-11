@@ -14,7 +14,7 @@ const Header = () => {
             <h1 className='col-span-2 flex justify-center font-bold'>
                 Not a PC
             </h1>
-            <div className='col-start-7 col-span-4 flex justify-around'>
+            <div className='col-start-8 col-span-4 flex justify-around'>
                 {Links.map((link) => (
                     <Link
                         key={link.name}
