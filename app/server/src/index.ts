@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import user from './routes/user';
+import task from './routes/task';
 
 import * as fs from 'fs';
 import * as path from 'path';
@@ -13,6 +14,6 @@ app.get('/', async (c) => {
     return c.html(htmlContent);
 });
 app.route('/user', user);
-
+app.route('/task', task);
 
 export default app;

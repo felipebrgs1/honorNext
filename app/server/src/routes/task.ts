@@ -13,13 +13,17 @@ const createTaskSchema = z.object({
     userId: z.number().int().positive('userId must be a positive integer'),
 });
 
+task.get('/', async (c) => {
+    const tasks = await prisma.task.findMany();
+    return c.json(tasks);
+});
+
 task.get('/:userId', async (c) => {
-    const body = c.req.param('userId');
-    const parseResult = createTaskSchema.safeParse(body);
-    if (!parseResult.success) {
-        return c.json({ error: parseResult.error.flatten() }, 400);
+    const userIdParam = c.req.param('userId');
+    const userId = Number(userIdParam);
+    if (!Number.isInteger(userId) || userId <= 0) {
+        return c.json({ error: 'userId must be a positive integer' }, 400);
     }
-    const userId = parseResult.data.userId;
 
     const tasks = await prisma.task.findMany({
         where: {
@@ -62,3 +66,5 @@ task.post('/create', async (c) => {
 
     return c.json(task);
 });
+
+export default task;

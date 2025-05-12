@@ -10,6 +10,10 @@ user.get('/:id', async (c) => {
     });
     return c.json(user);
 });
+user.get('/', async (c) => {
+    const users = await prisma.user.findMany();
+    return c.json(users);
+});
 
 user.post('/create', async (c) => {
     const { name, email } = await c.req.json();
